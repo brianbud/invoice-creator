@@ -2,3 +2,32 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    border: 2px solid red;
+    margin: auto;
+}
+
+header {
+    border: 2px solid red;
+    width: 500px;
+    text-align: center;
+    background-color: #3A69D2;
+    color:#FFFFFF;
+}
+
+section {
+    width: 500px;
+    background-color: #1F2937;
+    color:#FFFFFF;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0;
+}
