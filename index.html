@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -14,22 +20,23 @@
         <p>Thanks for choosing BudCorp LLC</p>
       </header>
       <section>
-        <div class="tasks-options">
-          <button>Task 1</button>
-          <button>Task 1</button>
-          <button>Task 1</button>
+        <div class="info">
+          <div class="tasks-options">
+            <button>Task 1</button>
+            <button>Task 2</button>
+            <button>Task 3</button>
+          </div>
+          <div class="tasks-selected">
+            <p>TASKS</p>
+            <p>TOTAL</p>
+          </div>
+          <div class="total">
+            <p>NOTES</p>
+            <p>TOTAL AMOUNT</p>
+          </div>
+          <p class="total-amount">$0</p>
+          <button class="send-invoice-btn">Send Invoice</button>
         </div>
-        <div class="tasks-selected">
-          <h2>Task</h2>
-          <h2>Total</h2>
-        </div>
-        <div class="total">
-          <h2>notes</h2>
-          <h2>total amount</h2>
-        </div>
-      </section>
-      <section>
-        <button>Send Invoice</button>
       </section>
     </main>
     <script src="index.js" type="module"></script>
