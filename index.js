@@ -13,11 +13,12 @@ jobs.forEach(function ({ name, price, id }) {
 });
 
 document.addEventListener("click", function (e) {
-  if (e.target.dataset.add) {
+  if (!tasksArray.includes(jobs[e.target.dataset.add])) {
     tasksArray.push(jobs[e.target.dataset.add]);
     tasksPrices.push(jobs[e.target.dataset.add].price);
     showSelectedTasks(tasksArray);
     showTotalAmount(tasksPrices);
+    console.log(jobs[e.target.dataset.add]);
   }
 });
 
@@ -39,5 +40,4 @@ function showTotalAmount(arr) {
   let total = arr.reduce((a, b) => a + b, 0);
 
   totalAmount.innerHTML = `$${total}`;
-  console.log(total);
 }
