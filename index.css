@@ -42,7 +42,8 @@ h1 {
 }
 
 .tasks-options > button {
-    width: 25%;
+    cursor: pointer;
+    width: 30%;
     font-weight: 500;
     font-size: 14px;
     background-color: #D1D4F4;
@@ -66,7 +67,7 @@ h1 {
     font-weight: 500;
 }
 
-.tasks-selected, .total {
+.titles, .total {
     color:#D5D4D8;
     font-size: 12px;
     font-weight: 700;
@@ -85,4 +86,11 @@ h1 {
     display: flex;
     justify-content: end;
     margin-top: 0;
+}
+
+
+.tasks-selected > div{
+    display: flex;
+    justify-content: space-between;
+
 }
