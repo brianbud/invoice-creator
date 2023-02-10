@@ -39,7 +39,7 @@ function showSelectedTasks(arr) {
   arr.forEach(function ({ name, price, id }) {
     taskHtml += `
     <div>
-        <p>${name} <button data-remove= "${id}">remove</button></p>
+        <p>${name} <button data-remove= "${id}" class="remove-btn">remove</button></p>
         <p>$${price}</p>
     </div>`;
   });
