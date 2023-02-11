@@ -3,6 +3,7 @@ import { jobs } from "./data.js";
 const tasksEl = document.getElementById("tasks");
 const tasksSelected = document.getElementById("tasks-selected");
 const totalAmount = document.getElementById("total-amount");
+const sendInvoice = document.querySelector(".send-invoice-btn");
 const tasksArray = [];
 let tasksPrices = [];
 
@@ -21,6 +22,7 @@ document.addEventListener("click", function (e) {
     tasksPrices.push(jobs[e.target.dataset.add].price);
     showSelectedTasks(tasksArray);
     showTotalAmount(tasksPrices);
+    resetInvoiceBtn();
   }
   if (e.target.dataset.remove) {
     let removedItem = e.target.dataset.remove;
@@ -39,7 +41,7 @@ function showSelectedTasks(arr) {
   arr.forEach(function ({ name, price, id }) {
     taskHtml += `
     <div>
-        <p>${name} <button data-remove= "${id}" class="remove-btn">remove</button></p>
+        <p class="task-name">${name} <button data-remove= "${id}" class="remove-btn">remove</button></p>
         <p>$${price}</p>
     </div>`;
   });
@@ -51,4 +53,21 @@ function showTotalAmount(arr) {
   let total = arr.reduce((a, b) => a + b, 0);
 
   totalAmount.innerHTML = `$${total}`;
+}
+
+sendInvoice.addEventListener("click", handleInvoiceBtn);
+
+function handleInvoiceBtn() {
+  if (tasksArray.length > 0) {
+    sendInvoice.innerHTML = `<i class="fa-solid fa-check"></i> Invoice Sent!`;
+    sendInvoice.style.backgroundColor = "#93a8d7";
+  } else if (tasksArray.length === 0) {
+    sendInvoice.innerHTML = ` Please select a task`;
+    sendInvoice.style.backgroundColor = "#93a8d7";
+  }
+}
+
+function resetInvoiceBtn() {
+  sendInvoice.innerHTML = `<i class="fa-solid fa-envelope"></i> Send Invoice`;
+  sendInvoice.style.backgroundColor = "#3A69D2";
 }
