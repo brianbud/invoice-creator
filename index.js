@@ -6,6 +6,7 @@ const totalAmount = document.getElementById("total-amount");
 const sendInvoice = document.querySelector(".send-invoice-btn");
 const tasksArray = [];
 let tasksPrices = [];
+let totalPrice = 0;
 
 jobs.forEach(function ({ name, price, id }) {
   tasksEl.innerHTML += `
@@ -21,38 +22,37 @@ document.addEventListener("click", function (e) {
     tasksArray.push(jobs[e.target.dataset.add]);
     tasksPrices.push(jobs[e.target.dataset.add].price);
     showSelectedTasks(tasksArray);
-    showTotalAmount(tasksPrices);
+    showAmount(jobs[e.target.dataset.add].price, true);
     resetInvoiceBtn();
   }
   if (e.target.dataset.remove) {
     let removedItem = e.target.dataset.remove;
     let itemIndex = tasksArray.findIndex((item) => item.id == removedItem);
+    showAmount(tasksArray[itemIndex].price, false);
     tasksArray.splice(itemIndex, 1);
-    console.log(tasksArray);
-    tasksPrices = tasksPrices.filter((price, index) => index != itemIndex);
     e.target.closest("div").remove();
-    showTotalAmount(tasksPrices);
   }
 });
 
 function showSelectedTasks(arr) {
-  let taskHtml = "";
-
+  tasksSelected.innerHTML = "";
   arr.forEach(function ({ name, price, id }) {
-    taskHtml += `
+    tasksSelected.innerHTML += `
     <div>
         <p class="task-name">${name} <button data-remove= "${id}" class="remove-btn">remove</button></p>
         <p>$${price}</p>
     </div>`;
   });
-
-  tasksSelected.innerHTML = taskHtml;
 }
 
-function showTotalAmount(arr) {
-  let total = arr.reduce((a, b) => a + b, 0);
+function showAmount(price, isAdd) {
+  if (isAdd === true) {
+    totalPrice += price;
+  } else if (isAdd === false) {
+    totalPrice -= price;
+  }
 
-  totalAmount.innerHTML = `$${total}`;
+  totalAmount.innerHTML = `$${totalPrice}`;
 }
 
 sendInvoice.addEventListener("click", handleInvoiceBtn);
